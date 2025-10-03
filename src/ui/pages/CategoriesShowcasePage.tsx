@@ -130,7 +130,7 @@ export function CategoriesShowcasePage() {
                   <li>• Product count for each category</li>
                   <li>• Smooth hover animations</li>
                   <li>• Fully responsive grid</li>
-                  <li>• "View All Categories" link</li>
+                  <li>• &quot;View All Categories&quot; link</li>
                   <li>• Accessible keyboard navigation</li>
                 </ul>
               </div>
@@ -142,22 +142,22 @@ export function CategoriesShowcasePage() {
                     <div>
                       <span className="text-purple-600">title?:</span>{' '}
                       <span className="text-blue-600">string</span>
-                      <span className="text-gray-500"> // Default: "Shop by Category"</span>
+                      {/* <span className="text-gray-500"> // Default: "Shop by Category"</span> */}
                     </div>
                     <div>
                       <span className="text-purple-600">subtitle?:</span>{' '}
                       <span className="text-blue-600">string</span>
-                      <span className="text-gray-500"> // Default: "Browse our..."</span>
+                      {/* <span className="text-gray-500"> // Default: "Browse our..."</span> */}
                     </div>
                     <div>
                       <span className="text-purple-600">variant?:</span>{' '}
-                      <span className="text-blue-600">'grid' | 'slider'</span>
-                      <span className="text-gray-500"> // Default: 'grid'</span>
+                      <span className="text-blue-600">&apos;grid&apos; | &apos;slider&apos;</span>
+                      {/* <span className="text-gray-500"> // Default: 'grid'</span> */}
                     </div>
                     <div>
                       <span className="text-purple-600">itemsToShow?:</span>{' '}
                       <span className="text-blue-600">number</span>
-                      <span className="text-gray-500"> // Default: 12</span>
+                      {/* <span className="text-gray-500"> // Default: 12</span> */}
                     </div>
                   </div>
                 </div>

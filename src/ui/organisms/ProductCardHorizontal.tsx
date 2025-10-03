@@ -33,7 +33,6 @@ export function ProductCardHorizontal({
   rating,
   reviewCount,
   image,
-  description,
   features,
   className,
   onAddToCart,

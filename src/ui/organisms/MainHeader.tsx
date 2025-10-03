@@ -2,8 +2,6 @@
 
 import { useState } from 'react';
 import { ShoppingCart, User, Heart, Search, Menu, X, ChevronDown } from 'lucide-react';
-import { cn } from '@/utils/cn';
-import { Input } from '../atoms';
 
 export interface MainHeaderProps {
   cartCount?: number;
@@ -16,7 +14,6 @@ export function MainHeader({
   cartCount = 2,
   cartTotal = '$200.99',
   isLoggedIn = false,
-  wishlistCount = 0,
 }: MainHeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mobileSearchOpen, setMobileSearchOpen] = useState(false);

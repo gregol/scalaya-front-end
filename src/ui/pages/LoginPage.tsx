@@ -93,7 +93,7 @@ export function LoginPage() {
           {/* Footer Links */}
           <div className="text-center">
             <p className="font-jost text-sm text-gray-600 dark:text-gray-400">
-              Don't have an account?{' '}
+              Don&apos;t have an account?{' '}
               <Link
                 href={ROUTES.REGISTER}
                 className="font-medium text-navy-900 hover:text-primary-500 dark:text-primary-400 transition-colors"

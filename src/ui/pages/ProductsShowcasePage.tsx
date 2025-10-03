@@ -23,20 +23,20 @@ export function ProductsShowcasePage() {
     ],
   };
 
-  const handleAddToCart = (id: string) => {
-    console.log('Add to cart:', id);
+  const handleAddToCart = (_id: string) => {
+    // TODO: Implement add to cart functionality
   };
 
-  const handleToggleWishlist = (id: string) => {
-    console.log('Toggle wishlist:', id);
+  const handleToggleWishlist = (_id: string) => {
+    // TODO: Implement wishlist toggle functionality
   };
 
-  const handleQuickView = (id: string) => {
-    console.log('Quick view:', id);
+  const handleQuickView = (_id: string) => {
+    // TODO: Implement quick view functionality
   };
 
-  const handleCompare = (id: string) => {
-    console.log('Compare:', id);
+  const handleCompare = (_id: string) => {
+    // TODO: Implement compare functionality
   };
 
   return (

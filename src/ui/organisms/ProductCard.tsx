@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import { Heart, Eye, BarChart3 } from 'lucide-react';
-import { Button, Badge, Card } from '../atoms';
+import { Button, Card } from '../atoms';
 import { Rating } from '../molecules';
 import { cn } from '@/utils/cn';
 

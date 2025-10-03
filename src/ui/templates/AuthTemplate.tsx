@@ -37,7 +37,7 @@ export function AuthTemplate({
           <p className="mt-6 text-center text-sm text-gray-600 dark:text-gray-400">
             {footer.text}{' '}
             <Link
-              href={footer.link}
+              href={footer.link as any}
               className="font-medium text-primary-600 hover:text-primary-500 dark:text-primary-400"
             >
               {footer.linkText}
