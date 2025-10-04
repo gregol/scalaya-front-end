@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
+import type { Route } from 'next';
 import { cn } from '@/utils/cn';
 import { ROUTES } from '@/config/constants';
 
@@ -10,7 +11,7 @@ interface UserActionButtonProps {
   iconSize: { width: number; height: number };
   label: string;
   sublabel: string;
-  href: string;
+  href: Route | string;
   count?: number;
   variant?: 'bordered' | 'filled';
   className?: string;
@@ -28,7 +29,7 @@ function UserActionButton({
 }: UserActionButtonProps) {
   return (
     <Link
-      href={href}
+      href={href as Route}
       className={cn(
         'relative flex items-center gap-[15px] h-[50px] px-[15px] rounded-md transition-all hover:bg-white/10',
         variant === 'bordered' && 'border border-white/10',

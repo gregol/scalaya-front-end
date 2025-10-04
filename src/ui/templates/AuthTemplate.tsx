@@ -1,5 +1,6 @@
 import { ReactNode } from 'react';
 import Link from 'next/link';
+import type { Route } from 'next';
 import { Card } from '../atoms';
 
 interface AuthTemplateProps {
@@ -37,7 +38,7 @@ export function AuthTemplate({
           <p className="mt-6 text-center text-sm text-gray-600 dark:text-gray-400">
             {footer.text}{' '}
             <Link
-              href={footer.link as any}
+              href={footer.link as Route}
               className="font-medium text-primary-600 hover:text-primary-500 dark:text-primary-400"
             >
               {footer.linkText}

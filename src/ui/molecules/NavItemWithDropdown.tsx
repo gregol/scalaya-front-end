@@ -18,7 +18,7 @@ interface NavItemWithDropdownProps {
 export function NavItemWithDropdown({
   label,
   href,
-  menuType,
+  menuType: _menuType,
   isActive = false,
   isMenuOpen = false,
   onMouseEnter,
@@ -30,7 +30,7 @@ export function NavItemWithDropdown({
       onMouseEnter={onMouseEnter}
     >
       <Link
-        href={href as any}
+        href={href as Route}
         className={cn(
           'text-nav text-white hover:text-primary-500 transition-colors relative inline-flex items-center gap-1.5',
           isActive && 'text-primary-500',

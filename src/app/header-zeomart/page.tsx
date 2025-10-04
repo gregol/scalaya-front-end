@@ -23,7 +23,7 @@ export default function Page() {
             <div className="border-l-4 border-primary-500 pl-4">
               <h2 className="font-semibold text-textDark">Componentes incluidos:</h2>
               <ul className="list-disc list-inside text-textLight space-y-2 mt-2">
-                <li>Logo "Zeomart." con tipografía Poppins</li>
+                <li>Logo &quot;Zeomart.&quot; con tipografía Poppins</li>
                 <li>Barra de búsqueda con dropdown de categorías</li>
                 <li>Acciones de usuario: Wishlist, Account, Cart</li>
                 <li>Navegación principal: Home, Shop, Pages, Blog</li>

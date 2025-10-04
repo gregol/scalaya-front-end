@@ -2,6 +2,8 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
+import type { Route } from 'next';
 import { Button } from '@/ui/atoms/Button';
 import { Tag } from '@/ui/atoms/Tag';
 import { SliderControls } from '@/ui/molecules/SliderControls';
@@ -24,8 +26,8 @@ interface HeroSliderProps {
 
 export function HeroSlider({
   slides,
-  autoPlay = false,
-  autoPlayInterval = 5000,
+  autoPlay: _autoPlay = false,
+  autoPlayInterval: _autoPlayInterval = 5000,
 }: HeroSliderProps) {
   const [currentSlide, setCurrentSlide] = useState(0);
 
@@ -76,14 +78,15 @@ export function HeroSlider({
           <p className="text-body text-textDark">{slide.description}</p>
 
           {/* CTA Button */}
-          <Button
-            variant="primary"
-            size="lg"
-            href={slide.ctaHref}
-            className="mt-[46px]"
-          >
-            {slide.ctaText}
-          </Button>
+          <Link href={slide.ctaHref as Route}>
+            <Button
+              variant="primary"
+              size="lg"
+              className="mt-[46px]"
+            >
+              {slide.ctaText}
+            </Button>
+          </Link>
         </div>
       </div>
 

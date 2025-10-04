@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
+import type { Route } from 'next';
 import { X, ChevronDown } from 'lucide-react';
 import { SearchBar } from '@/ui/molecules/SearchBar';
 import { NavItem } from '@/ui/molecules/NavItem';
@@ -174,7 +174,7 @@ export function ZeoMartHeader({
               ].map((category, index) => (
                 <div key={index} className="border-b border-gray-100 dark:border-gray-800 last:border-0">
                   <Link
-                    href={`/category/${category.name.toLowerCase().replace(/\s+/g, '-')}`}
+                    href={`/category/${category.name.toLowerCase().replace(/\s+/g, '-')}` as Route}
                     className="flex items-center justify-between px-6 py-4 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors group"
                     onClick={() => setCategoriesSidebarOpen(false)}
                   >
@@ -198,7 +198,7 @@ export function ZeoMartHeader({
                       {category.subcategories.map((sub, subIndex) => (
                         <Link
                           key={subIndex}
-                          href={`/category/${category.name.toLowerCase().replace(/\s+/g, '-')}/${sub.toLowerCase().replace(/\s+/g, '-')}`}
+                          href={`/category/${category.name.toLowerCase().replace(/\s+/g, '-')}/${sub.toLowerCase().replace(/\s+/g, '-')}` as Route}
                           className="font-jost text-sm text-gray-600 dark:text-gray-400 hover:text-primary-500 transition-colors"
                           onClick={() => setCategoriesSidebarOpen(false)}
                         >

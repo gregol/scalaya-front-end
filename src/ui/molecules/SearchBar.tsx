@@ -15,7 +15,7 @@ export function SearchBar({
   className = '',
 }: SearchBarProps) {
   const [query, setQuery] = useState('');
-  const [category, setCategory] = useState('all');
+  const [_category, _setCategory] = useState('all');
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();

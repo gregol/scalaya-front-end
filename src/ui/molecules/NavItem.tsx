@@ -22,7 +22,7 @@ export function NavItem({
 }: NavItemProps) {
   return (
     <Link
-      href={href as any}
+      href={href as Route}
       className={cn(
         'text-nav text-white hover:text-primary-500 transition-colors relative inline-flex items-center gap-1.5',
         isActive && 'text-primary-500',
