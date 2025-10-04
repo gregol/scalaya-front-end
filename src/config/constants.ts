@@ -11,6 +11,16 @@ export const ROUTES = {
   LOGIN: '/login',
   REGISTER: '/register',
   DASHBOARD: '/dashboard',
+  PRODUCTS: '/products',
+  PAGES: '/pages',
+  BLOG: '/blog',
+  CATEGORIES: '/categories',
+  CART: '/cart',
+  WISHLIST: '/wishlist',
+  DEALS: '/deals',
+  HOT_DEALS: '/hot-deals',
+  BEST_SELLERS: '/best-sellers',
+  NEW_ARRIVALS: '/new-arrivals',
 } as const;
 
 export const API_ROUTES = {

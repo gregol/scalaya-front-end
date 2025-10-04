@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { Button, Card } from '../atoms';
-import { MainLayout } from '../templates';
+import { HeroSlider, ZeoMartHeader } from '../organisms';
 import { ROUTES, APP_NAME } from '@/config/constants';
 import { ArrowRight, Check, Zap, Shield, Sparkles } from 'lucide-react';
 
@@ -23,9 +23,47 @@ export function HomePage() {
     },
   ];
 
+  const heroSlides = [
+    {
+      id: 1,
+      tag: 'Limited Edition',
+      title: 'Sport Essentials \nYoga Mats, Weights \n& more',
+      description: 'Discover our new items. Up to 25% Off !',
+      ctaText: 'Shop Now',
+      ctaHref: ROUTES.PRODUCTS,
+      backgroundImage: '/assets/figma/hero-sport-equipment.png',
+    },
+    {
+      id: 2,
+      tag: 'New Arrival',
+      title: 'Premium Fitness \nEquipment Collection',
+      description: 'Get fit with our latest collection. Free shipping!',
+      ctaText: 'Shop Now',
+      ctaHref: ROUTES.PRODUCTS,
+      backgroundImage: '/assets/figma/hero-sport-equipment.png',
+    },
+    {
+      id: 3,
+      tag: 'Hot Deal',
+      title: 'Summer Sale \nUp to 40% Off',
+      description: 'Limited time offer on selected items.',
+      ctaText: 'Shop Now',
+      ctaHref: ROUTES.PRODUCTS,
+      backgroundImage: '/assets/figma/hero-sport-equipment.png',
+    },
+  ];
+
   return (
-    <MainLayout cartCount={2} cartTotal="$200.99">
+    <div className="min-h-screen">
+      {/* ZeoMart Header */}
+      <ZeoMartHeader cartCount={2} cartTotal="$200.99" wishlistCount={5} />
+      
       <div className="bg-gradient-to-br from-primary-50 via-white to-primary-100 dark:from-gray-900 dark:via-gray-950 dark:to-gray-900">
+      
+      {/* Hero Slider - ZeoMart Design */}
+      <section className="max-w-[1920px] mx-auto pt-8">
+        <HeroSlider slides={heroSlides} autoPlay />
+      </section>
 
       {/* Hero Section */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16 text-center">
@@ -118,7 +156,7 @@ export function HomePage() {
         </Link>
       </section>
       </div>
-    </MainLayout>
+    </div>
   );
 }
 

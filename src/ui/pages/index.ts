@@ -1,6 +1,7 @@
 export * from './CategoriesShowcasePage';
 export * from './DashboardPage';
 export * from './DesignSystemPage';
+export * from './DesignTokensPage';
 export * from './FooterShowcasePage';
 export * from './HeaderShowcasePage';
 export * from './HomePage';
