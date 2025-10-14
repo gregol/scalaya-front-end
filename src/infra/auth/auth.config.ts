@@ -2,8 +2,15 @@ import type { NextAuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import GoogleProvider from 'next-auth/providers/google';
 import { authenticateUser } from '@/core/usecases';
+import { apiAuthAdapter } from './api-auth-adapter';
 import { mockAuthAdapter } from './mock-auth-adapter';
 import { LoginCredentialsSchema } from '@/core/domain';
+
+// Use API adapter for production, mock for development fallback
+const authAdapter =
+  process.env.NEXT_PUBLIC_USE_MOCK_API === 'true'
+    ? mockAuthAdapter
+    : apiAuthAdapter;
 
 export const authOptions: NextAuthOptions = {
   providers: [
@@ -22,11 +29,29 @@ export const authOptions: NextAuthOptions = {
           // Validate with Zod
           const validated = LoginCredentialsSchema.parse(credentials);
 
-          // Call use case
-          const user = await authenticateUser(validated, mockAuthAdapter);
+          // Call use case with selected auth adapter
+          const user = await authenticateUser(validated, authAdapter);
 
           if (!user) {
             throw new Error('Invalid credentials');
+          }
+
+          // Store JWT token if using API adapter
+          if (
+            'getToken' in authAdapter &&
+            typeof authAdapter.getToken === 'function'
+          ) {
+            const token = authAdapter.getToken();
+            if (token) {
+              // Token will be available in the session via JWT callback
+              return {
+                id: user.id,
+                name: user.name,
+                email: user.email,
+                image: user.image,
+                accessToken: token,
+              };
+            }
           }
 
           return {
@@ -58,6 +83,11 @@ export const authOptions: NextAuthOptions = {
         token.email = user.email;
         token.name = user.name;
         token.picture = user.image;
+
+        // Store API Platform JWT token if available
+        if ('accessToken' in user && typeof user.accessToken === 'string') {
+          token.accessToken = user.accessToken;
+        }
       }
 
       // Handle Google OAuth
@@ -75,6 +105,12 @@ export const authOptions: NextAuthOptions = {
         session.user.name = token.name as string;
         session.user.image = token.picture as string;
       }
+
+      // Include API Platform JWT token in session
+      if (token.accessToken && typeof token.accessToken === 'string') {
+        (session as { accessToken?: string }).accessToken = token.accessToken;
+      }
+
       return session;
     },
   },
@@ -88,5 +124,3 @@ export const authOptions: NextAuthOptions = {
   },
   secret: process.env.NEXTAUTH_SECRET,
 };
-
-

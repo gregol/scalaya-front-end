@@ -251,11 +251,13 @@ export class MockAuthAdapter implements AuthPort {
 ## Scalability Considerations
 
 ### Current (MVP)
+
 - In-memory database
 - Single-server deployment
 - No caching layer
 
 ### Production Ready
+
 - Replace `MockUserDatabase` with real DB adapter
 - Add Redis for session storage
 - Implement proper password hashing (bcrypt)
@@ -302,5 +304,3 @@ export class MockAuthAdapter implements AuthPort {
 - [Atomic Design](https://atomicdesign.bradfrost.com/)
 - [Next.js Best Practices](https://nextjs.org/docs/app/building-your-application)
 - [Domain-Driven Design](https://www.domainlanguage.com/ddd/)
-
-

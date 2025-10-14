@@ -27,11 +27,11 @@ export function SearchBar({
   return (
     <form
       onSubmit={handleSubmit}
-      className={`relative flex items-center h-[50px] bg-white rounded-md overflow-hidden ${className}`}
+      className={`relative flex h-[50px] items-center overflow-hidden rounded-md bg-white ${className}`}
     >
-      {/* Category Dropdown */}
-      <div className="relative flex items-center gap-2 px-5 py-[10px] border-r border-accent-gray">
-        <span className="text-body text-textDark whitespace-nowrap">
+      {/* Category Dropdown - Hidden on mobile */}
+      <div className="relative hidden items-center gap-2 border-r border-accent-gray px-5 py-[10px] md:flex">
+        <span className="text-body whitespace-nowrap text-textDark">
           All Categories
         </span>
         <Image
@@ -39,7 +39,7 @@ export function SearchBar({
           alt=""
           width={9}
           height={5}
-          className="w-[8.51px] h-[5px]"
+          className="h-[5px] w-[8.51px]"
         />
       </div>
 
@@ -49,13 +49,13 @@ export function SearchBar({
         value={query}
         onChange={(e) => setQuery(e.target.value)}
         placeholder={placeholder}
-        className="flex-1 h-full px-4 text-body text-textDark placeholder:text-textLight bg-transparent border-none outline-none focus:outline-none"
+        className="md:text-body h-full flex-1 border-none bg-transparent px-4 text-sm text-textDark outline-none placeholder:text-textLight focus:outline-none"
       />
 
       {/* Search Button */}
       <button
         type="submit"
-        className="h-full w-[50px] bg-primary-500 flex items-center justify-center rounded-r-md hover:bg-primary-600 transition-colors"
+        className="flex h-full w-[50px] items-center justify-center rounded-r-md bg-primary-500 transition-colors hover:bg-primary-600"
         aria-label="Search"
       >
         <Image
@@ -63,10 +63,9 @@ export function SearchBar({
           alt=""
           width={17}
           height={17}
-          className="w-5 h-5"
+          className="h-[18px] w-[18px] md:h-5 md:w-5"
         />
       </button>
     </form>
   );
 }
-

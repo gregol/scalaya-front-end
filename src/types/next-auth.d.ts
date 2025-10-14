@@ -8,6 +8,7 @@ declare module 'next-auth' {
       name: string;
       image?: string | null;
     };
+    accessToken?: string; // API Platform JWT token
   }
 
   interface User {
@@ -15,6 +16,7 @@ declare module 'next-auth' {
     email: string;
     name: string;
     image?: string | null;
+    accessToken?: string; // API Platform JWT token
   }
 }
 
@@ -24,7 +26,6 @@ declare module 'next-auth/jwt' {
     email: string;
     name: string;
     picture?: string | null;
+    accessToken?: string; // API Platform JWT token
   }
 }
-
-

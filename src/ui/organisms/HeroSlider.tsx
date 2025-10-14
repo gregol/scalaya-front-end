@@ -6,7 +6,6 @@ import Link from 'next/link';
 import type { Route } from 'next';
 import { Button } from '@/ui/atoms/Button';
 import { Tag } from '@/ui/atoms/Tag';
-import { SliderControls } from '@/ui/molecules/SliderControls';
 
 interface Slide {
   id: number;
@@ -39,28 +38,32 @@ export function HeroSlider({
     setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
   };
 
+  const goToSlide = (index: number) => {
+    setCurrentSlide(index);
+  };
+
   const slide = slides[currentSlide];
 
   // Auto-play logic would go here with useEffect
   // Omitted for brevity but can be added if needed
 
   return (
-    <div className="relative w-full h-[598px] bg-gradient-to-b from-purple-800/5 to-transparent rounded-md overflow-hidden">
+    <div className="relative h-[598px] w-full overflow-hidden rounded-md bg-gradient-to-b from-purple-800/5 to-transparent">
       {/* Background Image */}
       <div className="absolute inset-0">
-        <div className="relative w-full h-full bg-white rounded-md overflow-hidden">
+        <div className="relative h-full w-full overflow-hidden rounded-md bg-white">
           <Image
             src={slide.backgroundImage}
             alt=""
             fill
-            className="object-cover -mt-[30px] -ml-3"
+            className="-ml-3 -mt-[30px] object-cover"
             priority
           />
         </div>
       </div>
 
       {/* Content Container */}
-      <div className="relative h-full max-w-[1400px] mx-auto px-[260px] flex items-center">
+      <div className="relative mx-auto flex h-full max-w-[1400px] items-center px-[260px]">
         <div className="relative w-[449px] space-y-6 pt-[92px]">
           {/* Tag */}
           {slide.tag && (
@@ -70,7 +73,7 @@ export function HeroSlider({
           )}
 
           {/* Title */}
-          <h1 className="text-hero text-textDark whitespace-pre-line">
+          <h1 className="text-hero whitespace-pre-line text-textDark">
             {slide.title}
           </h1>
 
@@ -79,25 +82,56 @@ export function HeroSlider({
 
           {/* CTA Button */}
           <Link href={slide.ctaHref as Route}>
-            <Button
-              variant="primary"
-              size="lg"
-              className="mt-[46px]"
-            >
+            <Button variant="primary" size="lg" className="mt-[46px]">
               {slide.ctaText}
             </Button>
           </Link>
         </div>
       </div>
 
-      {/* Slider Controls */}
-      <div className="absolute bottom-[30px] left-1/2 -translate-x-1/2 w-[1340px]">
-        <SliderControls
-          onPrev={goToPrev}
-          onNext={goToNext}
-          currentSlide={currentSlide}
-          totalSlides={slides.length}
+      {/* Arrow Navigation - Centered Vertically - Hidden on Mobile */}
+      <button
+        onClick={goToPrev}
+        className="absolute left-5 top-1/2 z-10 hidden h-[40px] w-[40px] -translate-y-1/2 items-center justify-center rounded-full bg-white shadow-button transition-transform hover:scale-105 md:flex lg:left-[290px] lg:h-[50px] lg:w-[50px]"
+        aria-label="Previous slide"
+      >
+        <Image
+          src="/assets/figma/icon-arrow-prev.svg"
+          alt=""
+          width={8}
+          height={14}
+          className="h-[11px] w-[6px] lg:h-[13.75px] lg:w-[7.43px]"
         />
+      </button>
+
+      <button
+        onClick={goToNext}
+        className="absolute right-5 top-1/2 z-10 hidden h-[40px] w-[40px] -translate-y-1/2 items-center justify-center rounded-full bg-white shadow-button transition-transform hover:scale-105 md:flex lg:right-[290px] lg:h-[50px] lg:w-[50px]"
+        aria-label="Next slide"
+      >
+        <Image
+          src="/assets/figma/icon-arrow-next.svg"
+          alt=""
+          width={8}
+          height={14}
+          className="h-[11px] w-[6px] lg:h-[13.75px] lg:w-[7.43px]"
+        />
+      </button>
+
+      {/* Bullet Indicators - Bottom Center */}
+      <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 items-center gap-3 md:bottom-[30px] md:gap-[22px]">
+        {slides.map((_, index) => (
+          <button
+            key={index}
+            className={`transition-all ${
+              index === currentSlide
+                ? 'h-4 w-4 rounded-full border-2 border-background-dark bg-transparent md:h-5 md:w-5'
+                : 'h-1 w-1 rounded-full bg-background-dark'
+            }`}
+            onClick={() => goToSlide(index)}
+            aria-label={`Go to slide ${index + 1}`}
+          />
+        ))}
       </div>
     </div>
   );
@@ -137,4 +171,3 @@ export function HeroSliderWithDefaults() {
 
   return <HeroSlider slides={defaultSlides} autoPlay />;
 }
-

@@ -2,6 +2,38 @@
 
 A production-ready Next.js application built with Clean Architecture, TypeScript, and modern best practices.
 
+## 📖 Documentation
+
+**Complete documentation is available in the [`docs/`](./docs/) folder.**
+
+Quick links:
+
+- **[Quick Start Guide](./docs/getting-started/QUICK_START.md)** - Get started in 5 minutes
+- **[Registration System](./docs/features/registration/REGISTRATION_SUMMARY.md)** - Customer & Seller registration
+- **[API Integration](./docs/api/API_INTEGRATION.md)** - Arawaney API Platform integration
+- **[Environment Setup](./docs/getting-started/ENV_SETUP.md)** - Configure environment variables
+- **[Architecture Guide](./docs/architecture/ARCHITECTURE.md)** - System architecture
+- **[Troubleshooting](./docs/troubleshooting/TROUBLESHOOTING.md)** - Common issues and solutions
+
+[**📚 View All Documentation →**](./docs/)
+
+**Documentation Structure:**
+
+```
+docs/
+├── getting-started/     # Setup and onboarding
+├── architecture/        # System design
+├── features/            # Feature documentation
+│   ├── registration/    # Customer & Seller registration
+│   ├── authentication/  # Auth system
+│   └── ui/             # UI components
+├── api/                # API integration
+├── design/             # Design system
+└── troubleshooting/    # Help & support
+```
+
+---
+
 ## 🚀 Features
 
 - ✅ **Next.js 14** with App Router and Server Components
@@ -157,7 +189,11 @@ cp .env.example .env.local
 Create a `.env.local` file:
 
 ```env
-# Required
+# API Configuration (Arawaney API Platform)
+NEXT_PUBLIC_API_URL=https://api.arawaney.com
+NEXT_PUBLIC_USE_MOCK_API=false
+
+# Required: NextAuth
 NEXTAUTH_SECRET=your_random_secret_here
 NEXTAUTH_URL=http://localhost:3000
 
@@ -167,9 +203,12 @@ GOOGLE_CLIENT_SECRET=your_google_client_secret
 ```
 
 **Generate NEXTAUTH_SECRET:**
+
 ```bash
 openssl rand -base64 32
 ```
+
+> **Note**: Set `NEXT_PUBLIC_USE_MOCK_API=true` to use mock data for development without backend access. See [API Integration Guide](./docs/api/API_INTEGRATION.md) for details.
 
 ### Development
 
@@ -183,6 +222,7 @@ pnpm dev
 ### Demo Credentials
 
 For testing, use these credentials:
+
 - **Email**: `demo@example.com`
 - **Password**: `Demo1234`
 
@@ -223,6 +263,7 @@ pnpm test -- --coverage
 ```
 
 Unit tests are located in `tests/unit/` and cover:
+
 - Atoms (UI components)
 - Use cases (business logic)
 - State management (Jotai atoms)
@@ -238,6 +279,7 @@ pnpm test:e2e:ui
 ```
 
 E2E tests cover:
+
 - Authentication flows
 - Protected route redirects
 - Registration process
@@ -248,6 +290,7 @@ E2E tests cover:
 The UI follows Atomic Design methodology:
 
 ### Atoms
+
 Basic building blocks (Button, Input, Card, etc.)
 
 ```tsx
@@ -255,10 +298,11 @@ import { Button } from '@/ui/atoms';
 
 <Button variant="primary" size="lg">
   Click me
-</Button>
+</Button>;
 ```
 
 ### Molecules
+
 Simple combinations of atoms (FormField, Navbar, etc.)
 
 ```tsx
@@ -269,32 +313,58 @@ import { FormField } from '@/ui/molecules';
   type="email"
   error={errors.email?.message}
   {...register('email')}
-/>
+/>;
 ```
 
 ### Organisms
+
 Complex components (LoginForm, DashboardStats, etc.)
 
 ```tsx
 import { LoginForm } from '@/ui/organisms';
 
-<LoginForm />
+<LoginForm />;
 ```
 
 ### Templates
+
 Page layouts (AuthTemplate, DashboardTemplate)
 
 ### Pages
+
 Complete page compositions
 
 ## 🔐 Authentication
 
-Authentication is handled by NextAuth.js with:
+Authentication is handled by NextAuth.js integrated with Arawaney API Platform:
 
-- **Credentials Provider**: Email/password authentication
+- **Credentials Provider**: Email/password authentication via API Platform JWT
 - **Google OAuth**: Optional Google sign-in
-- **JWT Strategy**: Stateless session management
+- **JWT Strategy**: Dual token system (NextAuth + API Platform)
 - **Middleware Protection**: Automatic route guarding
+- **API Integration**: Seamless integration with Symfony backend
+
+### API Integration
+
+This application integrates with **Arawaney API Platform** (Symfony + API Platform):
+
+```typescript
+// Authentication flow
+1. User submits credentials → NextAuth
+2. NextAuth → ApiAuthAdapter → API Platform
+3. API Platform returns JWT token
+4. Token stored in session for API requests
+```
+
+**Key Features:**
+
+- ✅ JWT Authentication with API Platform
+- ✅ Hydra/JSON-LD format support
+- ✅ Automatic token management
+- ✅ Clean Architecture with adapters pattern
+- ✅ Mock mode for development
+
+📖 **[Read the full API Integration Guide](./docs/api/API_INTEGRATION.md)**
 
 ### Protected Routes
 
@@ -332,6 +402,7 @@ function MyComponent() {
 ### Adding a New Component
 
 Follow Atomic Design:
+
 1. **Atom**: Basic, reusable component
 2. **Molecule**: Combination of atoms
 3. **Organism**: Complex, feature-specific component
@@ -362,10 +433,12 @@ Opinionated formatting with Tailwind plugin. Configuration in `.prettierrc`.
 ### Husky
 
 Pre-commit hooks:
+
 - Lint and format staged files
 - Conventional commit messages
 
 Setup:
+
 ```bash
 pnpm prepare
 ```
@@ -373,6 +446,7 @@ pnpm prepare
 ### Commitlint
 
 Enforces Conventional Commits format:
+
 - `feat:` New feature
 - `fix:` Bug fix
 - `docs:` Documentation
@@ -399,6 +473,7 @@ Enforces Conventional Commits format:
 ### Other Platforms
 
 Works on any platform supporting Next.js:
+
 - Netlify
 - Railway
 - AWS Amplify
@@ -420,6 +495,7 @@ MIT
 ## 🤝 Contributing
 
 Contributions are welcome! Please follow:
+
 1. Fork the repository
 2. Create a feature branch
 3. Make your changes
@@ -433,5 +509,3 @@ For issues or questions, please open a GitHub issue.
 ---
 
 Built with ❤️ using Next.js and Clean Architecture principles.
-
-

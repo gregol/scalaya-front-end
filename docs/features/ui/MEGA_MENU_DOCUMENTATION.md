@@ -9,6 +9,7 @@ Sistema de menús desplegables de 3 columnas implementado según el diseño de F
 Componente principal que renderiza el menú desplegable completo con overlay y contenedor.
 
 **Props:**
+
 ```typescript
 interface MegaMenuProps {
   type?: 'pages' | 'shop' | 'home' | 'blog';
@@ -24,6 +25,7 @@ interface MegaMenuProps {
 Componente que renderiza una columna individual del menú con título y lista de enlaces.
 
 **Props:**
+
 ```typescript
 interface MegaMenuColumnProps {
   title: string;
@@ -43,6 +45,7 @@ interface MenuItem {
 Item de navegación con funcionalidad de dropdown integrada.
 
 **Props:**
+
 ```typescript
 interface NavItemWithDropdownProps {
   label: string;
@@ -105,6 +108,7 @@ interface NavItemWithDropdownProps {
 ### Pages Menu (según diseño de Figma)
 
 **Columna 1 - Basic Pages:**
+
 - About
 - Become Vendor
 - Contact
@@ -120,6 +124,7 @@ interface NavItemWithDropdownProps {
 - UI Elements
 
 **Columna 2 - Vendor Pages:**
+
 - Vendor List
 - Vendor Single
 - Dashboard
@@ -130,6 +135,7 @@ interface NavItemWithDropdownProps {
 - Settings
 
 **Columna 3 - Account Dashboard:**
+
 - Account Details
 - Order
 - Address
@@ -139,6 +145,7 @@ interface NavItemWithDropdownProps {
 ### Shop Menu
 
 **Columna 1 - Shop Categories:**
+
 - All Products
 - Sport Equipment
 - Yoga & Fitness
@@ -147,6 +154,7 @@ interface NavItemWithDropdownProps {
 - Accessories
 
 **Columna 2 - Popular Products:**
+
 - Best Sellers
 - New Arrivals
 - Hot Deals
@@ -154,6 +162,7 @@ interface NavItemWithDropdownProps {
 - Clearance Sale
 
 **Columna 3 - Shopping Tools:**
+
 - My Cart
 - Wishlist
 - Compare
@@ -162,18 +171,21 @@ interface NavItemWithDropdownProps {
 ### Home Menu
 
 **Columna 1 - Quick Links:**
+
 - Home
 - Shop
 - About Us
 - Contact
 
 **Columna 2 - Categories:**
+
 - Browse All
 - Sport Equipment
 - Fitness
 - Accessories
 
 **Columna 3 - Support:**
+
 - Help Center
 - FAQ
 - Shipping Info
@@ -182,6 +194,7 @@ interface NavItemWithDropdownProps {
 ### Blog Menu
 
 **Columna 1 - Blog Categories:**
+
 - All Posts
 - Fitness Tips
 - Product Reviews
@@ -189,11 +202,13 @@ interface NavItemWithDropdownProps {
 - Nutrition
 
 **Columna 2 - Popular Posts:**
+
 - Top 10 Yoga Mats
 - Home Gym Setup
 - Beginner Guide
 
 **Columna 3 - Resources:**
+
 - Video Tutorials
 - Downloadable Guides
 - Expert Interviews
@@ -205,19 +220,15 @@ interface NavItemWithDropdownProps {
 ```tsx
 import { NavItemWithDropdown } from '@/ui/molecules';
 
-<NavItemWithDropdown 
-  label="Pages" 
-  href="/pages" 
-  menuType="pages"
-/>
+<NavItemWithDropdown label="Pages" href="/pages" menuType="pages" />;
 ```
 
 ### Con Estado Activo
 
 ```tsx
-<NavItemWithDropdown 
-  label="Shop" 
-  href="/products" 
+<NavItemWithDropdown
+  label="Shop"
+  href="/products"
   menuType="shop"
   isActive={true}
 />
@@ -287,6 +298,7 @@ Actualmente el diseño está optimizado para desktop (1920px). Para implementar 
 **URL de Demo:** `http://localhost:3001/mega-menu-demo`
 
 **Cómo Probar:**
+
 1. Visita la página demo
 2. Pasa el cursor sobre "Home", "Shop", "Pages" o "Blog"
 3. Verifica que el menú aparece con 3 columnas
@@ -311,4 +323,3 @@ Actualmente el diseño está optimizado para desktop (1920px). Para implementar 
 ---
 
 **Última actualización:** Basado en implementación del sistema de diseño ZeoMart
-

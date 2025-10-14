@@ -35,25 +35,25 @@ Clean Architecture (frontend)
 Organize code into layers to keep domain logic decoupled from framework/UI:
 
 src/
-  app/                    # Next.js routes (RSC)
-  core/                   # application-agnostic code
-    domain/               # entities/value-objects (Zod schemas), types
-    usecases/             # pure functions (e.g., authenticateUser, registerUser)
-    services/             # ports/interfaces (AuthPort, UserPort)
-  infra/                  # adapters bound to web platform/Next
-    auth/                 # NextAuth config & adapters implementing AuthPort
-    api/                  # route handlers that call usecases
-  ui/                     # Atomic Design system
-    atoms/
-    molecules/
-    organisms/
-    templates/
-    pages/                # thin compositions for route-level UIs
-  state/                  # Jotai atoms/selectors
-  utils/                  # helpers (fetchers, cookies, formatting)
-  styles/                 # globals.css, tailwind utilities
-  config/                 # app constants, feature flags
-  test/
+app/ # Next.js routes (RSC)
+core/ # application-agnostic code
+domain/ # entities/value-objects (Zod schemas), types
+usecases/ # pure functions (e.g., authenticateUser, registerUser)
+services/ # ports/interfaces (AuthPort, UserPort)
+infra/ # adapters bound to web platform/Next
+auth/ # NextAuth config & adapters implementing AuthPort
+api/ # route handlers that call usecases
+ui/ # Atomic Design system
+atoms/
+molecules/
+organisms/
+templates/
+pages/ # thin compositions for route-level UIs
+state/ # Jotai atoms/selectors
+utils/ # helpers (fetchers, cookies, formatting)
+styles/ # globals.css, tailwind utilities
+config/ # app constants, feature flags
+test/
 
 Domain: Zod schemas for User, Session, AuthCredentials, etc.
 
@@ -109,7 +109,7 @@ Organisms: Header (Navbar + user menu), DashboardShell (Sidebar + content).
 
 Templates: AuthTemplate, DashboardTemplate.
 
-Pages: thin compositions in ui/pages consumed by app/*/page.tsx.
+Pages: thin compositions in ui/pages consumed by app/\*/page.tsx.
 
 Responsive, accessible (labels/aria, keyboard focus), prefers-color-scheme support.
 
@@ -163,11 +163,11 @@ infra/auth/auth.config.ts (NextAuth), [...nextauth]/route.ts
 
 infra/api/auth/register/route.ts, infra/api/auth/login/route.ts (mock)
 
-core/domain/* (zod schemas), core/usecases/*, core/services/*
+core/domain/_ (zod schemas), core/usecases/_, core/services/\*
 
-state/* (atoms)
+state/\* (atoms)
 
-ui/* atoms/molecules/organisms/templates/pages
+ui/\* atoms/molecules/organisms/templates/pages
 
 styles/globals.css, tailwind.config.ts, postcss.config.js
 

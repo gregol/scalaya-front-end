@@ -6,16 +6,17 @@ Sistema de diseño basado en el archivo de Figma **ZeoMart-Theme**
 
 ### Colores Principales
 
-| Color | Variable | Hex | Uso |
-|-------|----------|-----|-----|
+| Color              | Variable      | Hex       | Uso                                |
+| ------------------ | ------------- | --------- | ---------------------------------- |
 | **Primary Yellow** | `primary-500` | `#F5C34B` | Botones principales, CTAs, acentos |
-| **Navy Dark** | `navy-900` | `#041E42` | Texto principal, headers |
-| **Purple Primary** | `purple-800` | `#443297` | Backgrounds, elementos destacados |
-| **Text Light** | `textLight` | `#626974` | Texto secundario, placeholders |
+| **Navy Dark**      | `navy-900`    | `#041E42` | Texto principal, headers           |
+| **Purple Primary** | `purple-800`  | `#443297` | Backgrounds, elementos destacados  |
+| **Text Light**     | `textLight`   | `#626974` | Texto secundario, placeholders     |
 
 ### Paleta Extendida
 
 #### Primary (Yellow)
+
 - `primary-50`: `#fefcf3`
 - `primary-100`: `#fef9e7`
 - `primary-200`: `#fdf2c4`
@@ -28,17 +29,20 @@ Sistema de diseño basado en el archivo de Figma **ZeoMart-Theme**
 - `primary-900`: `#89591d`
 
 #### Purple
+
 - `purple-50`: `#f5f3fb`
 - `purple-800`: `#443297` ⭐
 - `purple-950`: `#251b4f`
 
 #### Backgrounds
+
 - `background-white`: `#FFFFFF`
 - `background-purple`: `#443297`
 - `background-yellow`: `#F5C34B`
 - `background-dark`: `#112137`
 
 #### Accents
+
 - `accent-mint`: `#86F1DF` (Tags, badges)
 - `accent-gray`: `#D6D6D6` (Borders, dividers)
 
@@ -54,26 +58,38 @@ Sistema de diseño basado en el archivo de Figma **ZeoMart-Theme**
 
 ### Escala Tipográfica
 
-| Clase | Fuente | Tamaño | Peso | Line Height | Uso |
-|-------|--------|--------|------|-------------|-----|
-| `text-hero` | Jost | 50px | 400 | 1.445 | Títulos Hero |
-| `text-logo` | Poppins | 24px | 700 | 1.5 | Logo |
-| `text-lg` | Jost | 18px | 500 | 1.45 | Títulos de sección |
-| `text-nav` | Jost | 16px | 500 | 1.75 | Navegación |
-| `text-body` | Jost | 15px | 400 | 1.467 | Texto de cuerpo |
-| `text-ui-label` | Inter | 14px | 700 | 1.571 | Labels UI |
-| `text-tag` | Jost | 13px | 400 | 1.692 | Tags, badges |
-| `text-xs` | Inter | 8px | 700 | 1.21 | UI pequeños |
+| Clase           | Fuente  | Tamaño | Peso | Line Height | Uso                |
+| --------------- | ------- | ------ | ---- | ----------- | ------------------ |
+| `text-hero`     | Jost    | 50px   | 400  | 1.445       | Títulos Hero       |
+| `text-logo`     | Poppins | 24px   | 700  | 1.5         | Logo               |
+| `text-lg`       | Jost    | 18px   | 500  | 1.45        | Títulos de sección |
+| `text-nav`      | Jost    | 16px   | 500  | 1.75        | Navegación         |
+| `text-body`     | Jost    | 15px   | 400  | 1.467       | Texto de cuerpo    |
+| `text-ui-label` | Inter   | 14px   | 700  | 1.571       | Labels UI          |
+| `text-tag`      | Jost    | 13px   | 400  | 1.692       | Tags, badges       |
+| `text-xs`       | Inter   | 8px    | 700  | 1.21        | UI pequeños        |
 
 ### Clases Personalizadas
 
 ```css
-.text-hero { /* Hero headlines */ }
-.text-logo { /* Brand logo */ }
-.text-nav { /* Navigation items */ }
-.text-body { /* Body copy */ }
-.text-tag { /* Tags and labels */ }
-.text-ui-label { /* UI labels */ }
+.text-hero {
+  /* Hero headlines */
+}
+.text-logo {
+  /* Brand logo */
+}
+.text-nav {
+  /* Navigation items */
+}
+.text-body {
+  /* Body copy */
+}
+.text-tag {
+  /* Tags and labels */
+}
+.text-ui-label {
+  /* UI labels */
+}
 ```
 
 ## 🔘 Componentes
@@ -81,13 +97,13 @@ Sistema de diseño basado en el archivo de Figma **ZeoMart-Theme**
 ### Botones
 
 #### Primary Button
+
 ```tsx
-<button className="btn-primary">
-  Shop Now
-</button>
+<button className="btn-primary">Shop Now</button>
 ```
 
 **Estilos:**
+
 - Background: `primary-500`
 - Padding: `35px` horizontal, `15px` vertical
 - Border radius: `6px`
@@ -95,6 +111,7 @@ Sistema de diseño basado en el archivo de Figma **ZeoMart-Theme**
 - Shadow: `0px 10px 35px rgba(17, 33, 55, 0.1)`
 
 #### Icon Button
+
 ```tsx
 <button className="btn-icon">
   <Icon />
@@ -102,6 +119,7 @@ Sistema de diseño basado en el archivo de Figma **ZeoMart-Theme**
 ```
 
 **Estilos:**
+
 - Size: `50x50px`
 - Border radius: `50%` (circular)
 - Background: `white`
@@ -110,11 +128,13 @@ Sistema de diseño basado en el archivo de Figma **ZeoMart-Theme**
 ### Input Fields
 
 #### Search Input
+
 ```tsx
 <input className="input-search" placeholder="Search products…" />
 ```
 
 **Estilos:**
+
 - Height: `50px`
 - Border radius: `6px`
 - Background: `white`
@@ -124,13 +144,13 @@ Sistema de diseño basado en el archivo de Figma **ZeoMart-Theme**
 ### Cards
 
 #### Product Card
+
 ```tsx
-<div className="card">
-  {/* Content */}
-</div>
+<div className="card">{/* Content */}</div>
 ```
 
 **Estilos:**
+
 - Background: `white`
 - Border radius: `6px`
 - Shadow: `button`
@@ -138,25 +158,20 @@ Sistema de diseño basado en el archivo de Figma **ZeoMart-Theme**
 ## 📐 Spacing
 
 ```css
---spacing-xs: 4px
---spacing-sm: 8px
---spacing-md: 16px
---spacing-lg: 24px
---spacing-xl: 32px
+--spacing-xs: 4px --spacing-sm: 8px --spacing-md: 16px --spacing-lg: 24px
+  --spacing-xl: 32px;
 ```
 
 ## 🎯 Border Radius
 
 ```css
---radius-sm: 4px
---radius-md: 6px (default)
---radius-lg: 8px
+--radius-sm: 4px --radius-md: 6px (default) --radius-lg: 8px;
 ```
 
 ## 🌟 Shadows
 
 ```css
---shadow-button: 0px 10px 35px 0px rgba(17, 33, 55, 0.1)
+--shadow-button: 0px 10px 35px 0px rgba(17, 33, 55, 0.1);
 ```
 
 ## 🖼️ Assets
@@ -164,6 +179,7 @@ Sistema de diseño basado en el archivo de Figma **ZeoMart-Theme**
 Todos los assets están en `/public/assets/figma/`:
 
 ### Iconos
+
 - `icon-arrow-prev.svg` - Flecha anterior (slider)
 - `icon-arrow-next.svg` - Flecha siguiente (slider)
 - `icon-dropdown.svg` - Dropdown genérico
@@ -179,11 +195,13 @@ Todos los assets están en `/public/assets/figma/`:
 - `icon-shopping-cart-3.svg` - Carrito (variante 3)
 
 ### Imágenes
+
 - `hero-sport-equipment.png` - Imagen hero del slider (1956x976)
 
 ## 📦 Componentes de Figma
 
 ### Header (HEADER-1)
+
 - Logo: "Zeomart."
 - Search bar con categorías
 - Navegación principal: Home, Shop, Pages, Blog
@@ -191,6 +209,7 @@ Todos los assets están en `/public/assets/figma/`:
 - Navegación secundaria
 
 ### Slider
+
 - Hero section con imagen de fondo
 - Tag "Limited Edition"
 - Título grande
@@ -200,6 +219,7 @@ Todos los assets están en `/public/assets/figma/`:
 - Bullet points indicator
 
 ### Navigation Dropdown
+
 - Tres columnas:
   - Basic Pages
   - Vendor Pages
@@ -277,4 +297,3 @@ Desktop design width: **1920px**
 
 **Última actualización**: Basado en Figma file `qge65aM5BahVP9i6rcKAt0`
 **Nodo de referencia**: `open_pages_nav` (262:27524)
-

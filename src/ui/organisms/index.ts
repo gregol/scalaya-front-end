@@ -1,4 +1,5 @@
 export * from './CategorySection';
+export * from './CustomerRegisterForm';
 export * from './DashboardStats';
 export * from './Header';
 export * from './HeroSlider';
@@ -10,6 +11,6 @@ export * from './ProductCard';
 export * from './ProductCardDeal';
 export * from './ProductCardHorizontal';
 export * from './RegisterForm';
+export * from './RoleSelectionCard';
+export * from './SellerRegisterForm';
 export * from './ZeoMartHeader';
-
-

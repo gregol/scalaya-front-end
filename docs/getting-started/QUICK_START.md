@@ -7,19 +7,39 @@ Get up and running in 5 minutes!
 ```bash
 # 1. Install dependencies
 pnpm install
-# or: npm install / yarn install
+# or: bun install / npm install / yarn install
 
 # 2. Set up environment variables
-cp .env.example .env.local
+# Create .env.local and add:
+cat > .env.local << 'EOF'
+# API Configuration
+NEXT_PUBLIC_API_URL=https://api.arawaney.com
+NEXT_PUBLIC_USE_MOCK_API=false
+
+# NextAuth
+NEXTAUTH_SECRET=your_secret_here
+NEXTAUTH_URL=http://localhost:3000
+EOF
 
 # 3. Generate a secret for NextAuth
 # On Mac/Linux:
 openssl rand -base64 32
-# Then paste the output into .env.local as NEXTAUTH_SECRET
+# Then replace "your_secret_here" in .env.local with the generated secret
 
 # 4. Start development server
 pnpm dev
 ```
+
+### 🔄 Development Mode (Without Backend)
+
+If you want to develop without connecting to the real API:
+
+```bash
+# In .env.local, set:
+NEXT_PUBLIC_USE_MOCK_API=true
+```
+
+This uses an in-memory mock database for testing.
 
 ## 🎯 What You Get
 
@@ -34,9 +54,15 @@ Your app is now running at **http://localhost:3000**
 
 ### Demo Credentials
 
-Test the login flow with:
+**Mock Mode** (`NEXT_PUBLIC_USE_MOCK_API=true`):
+
 - **Email**: `demo@example.com`
 - **Password**: `Demo1234`
+
+**Production Mode** (real API):
+
+- Use your registered credentials from the Arawaney API
+- Or register a new account through the `/register` page
 
 ## 🚀 Try It Out
 
@@ -60,12 +86,25 @@ pnpm test:e2e
 ## 📖 Next Steps
 
 - Read the full [README.md](./README.md) for detailed documentation
+- **[API Integration Guide](./API_INTEGRATION.md)** - Learn about Arawaney API integration
 - Explore the project structure
 - Add your own features
 - Customize the styling
-- Connect to a real database
 
 ## 🔧 Common Tasks
+
+### Switch Between Mock and Real API
+
+```bash
+# In .env.local:
+
+# Use mock data (development)
+NEXT_PUBLIC_USE_MOCK_API=true
+
+# Use real API (production)
+NEXT_PUBLIC_USE_MOCK_API=false
+NEXT_PUBLIC_API_URL=https://api.arawaney.com
+```
 
 ### Add Google OAuth
 
@@ -74,13 +113,13 @@ pnpm test:e2e
    ```
    GOOGLE_CLIENT_ID=your_client_id
    GOOGLE_CLIENT_SECRET=your_client_secret
-   NEXT_PUBLIC_HAS_GOOGLE_OAUTH=true
    ```
 3. Restart dev server
 
 ### Change the App Name
 
 Edit `src/config/constants.ts`:
+
 ```typescript
 export const APP_NAME = 'Your App Name';
 ```
@@ -102,12 +141,14 @@ export const APP_NAME = 'Your App Name';
 ## 🆘 Troubleshooting
 
 ### Port 3000 already in use
+
 ```bash
 # Use a different port
 PORT=3001 pnpm dev
 ```
 
 ### Dependencies not installing
+
 ```bash
 # Clear cache and reinstall
 rm -rf node_modules .next
@@ -115,6 +156,7 @@ pnpm install
 ```
 
 ### Tests failing
+
 ```bash
 # Ensure dev server is NOT running when running unit tests
 # For E2E tests, the dev server should be running automatically
@@ -129,5 +171,3 @@ pnpm install
 ---
 
 Happy coding! 🎉
-
-

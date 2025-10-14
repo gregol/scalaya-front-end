@@ -1,6 +1,5 @@
 'use client';
 
-import { IconButton } from '@/ui/atoms/IconButton';
 import Image from 'next/image';
 
 interface SliderControlsProps {
@@ -8,6 +7,7 @@ interface SliderControlsProps {
   onNext: () => void;
   currentSlide: number;
   totalSlides: number;
+  onSlideChange?: (index: number) => void;
   className?: string;
 }
 
@@ -16,20 +16,25 @@ export function SliderControls({
   onNext,
   currentSlide,
   totalSlides,
+  onSlideChange,
   className = '',
 }: SliderControlsProps) {
   return (
-    <div className={`flex items-center justify-between w-full ${className}`}>
+    <div className={`flex w-full items-center justify-between ${className}`}>
       {/* Previous Button */}
-      <IconButton onClick={onPrev} ariaLabel="Previous slide">
+      <button
+        onClick={onPrev}
+        className="flex h-[50px] w-[50px] items-center justify-center rounded-full bg-white shadow-button transition-transform hover:scale-105"
+        aria-label="Previous slide"
+      >
         <Image
           src="/assets/figma/icon-arrow-prev.svg"
           alt=""
           width={8}
           height={14}
-          className="w-2 h-3.5"
+          className="h-[13.75px] w-[7.43px]"
         />
-      </IconButton>
+      </button>
 
       {/* Bullet Indicators */}
       <div className="flex items-center gap-[22px]">
@@ -38,28 +43,29 @@ export function SliderControls({
             key={index}
             className={`transition-all ${
               index === currentSlide
-                ? 'w-5 h-5 border-2 border-background-dark rounded-full'
-                : 'w-1 h-1 bg-background-dark rounded-full'
+                ? 'h-5 w-5 rounded-full border-2 border-background-dark bg-transparent'
+                : 'h-1 w-1 rounded-full bg-background-dark'
             }`}
-            onClick={() => {
-              /* Handle slide change */
-            }}
+            onClick={() => onSlideChange?.(index)}
             aria-label={`Go to slide ${index + 1}`}
           />
         ))}
       </div>
 
       {/* Next Button */}
-      <IconButton onClick={onNext} ariaLabel="Next slide">
+      <button
+        onClick={onNext}
+        className="flex h-[50px] w-[50px] items-center justify-center rounded-full bg-white shadow-button transition-transform hover:scale-105"
+        aria-label="Next slide"
+      >
         <Image
           src="/assets/figma/icon-arrow-next.svg"
           alt=""
           width={8}
           height={14}
-          className="w-2 h-3.5"
+          className="h-[13.75px] w-[7.43px]"
         />
-      </IconButton>
+      </button>
     </div>
   );
 }
-
